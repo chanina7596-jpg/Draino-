@@ -1,0 +1,14 @@
+DRAINO WEBSITE — CLOUDFLARE PAGES UPLOAD
+
+1. Sign in to Cloudflare.
+2. Open Workers & Pages.
+3. Choose Create application > Pages > Upload assets.
+4. Upload this ZIP file, or unzip it and upload the folder contents.
+5. Make sure index.html is at the top level of the upload.
+6. Publish and test the temporary pages.dev address.
+7. After approval, add draino24.com under Custom domains.
+8. Do not change GoDaddy DNS until the Cloudflare preview is working.
+
+This package contains a static HTML/CSS website and requires no build command.
+Build command: leave blank
+Build output directory: / (root)

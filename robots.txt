@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://draino24.com/sitemap.xml
