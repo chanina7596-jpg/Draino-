@@ -1,0 +1,1 @@
+Upload every file in this folder directly to the root of the GitHub repository. This version has no nested assets folder and is designed for mobile GitHub uploads.
