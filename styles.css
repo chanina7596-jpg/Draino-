@@ -764,3 +764,21 @@
   .google-review-ready{grid-template-columns:1fr}
   .google-review-placeholder{min-height:180px}
 }
+
+/* Keep the desktop header balanced at full and medium widths. */
+@media(min-width:901px){
+  .nav{gap:18px}
+  .nav>.logo{flex:0 0 auto}
+  .links{margin-left:auto;gap:18px}
+  .links a{white-space:nowrap}
+  .actions{flex:0 0 auto}
+  .actions .btn{white-space:nowrap}
+}
+
+@media(min-width:901px) and (max-width:1150px){
+  .wrap.nav{width:96%}
+  .logo img{width:160px}
+  .links{gap:13px;font-size:.82rem}
+  .actions .btn-outline{display:none}
+  .actions .btn{padding:11px 14px;font-size:.82rem}
+}
