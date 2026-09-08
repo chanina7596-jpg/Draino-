@@ -57,11 +57,7 @@
         <div class="card request-card">
           <h2 class="form-title">Service request</h2>
           <p class="form-intro">Complete the form and Draino will contact you about scheduling.</p>
-          <form class="form" id="requestForm" action="https://formsubmit.co/service@draino24.com" method="POST">
-            <input type="hidden" name="_captcha" value="false">
-            <input type="hidden" name="_subject" value="New service request from Draino24.com">
-            <input type="hidden" name="_template" value="table">
-            <input type="hidden" name="_next" value="https://draino24.com/thank-you.html">
+          <form class="form" id="requestForm">
 
             <div class="form-field">
               <label for="request-name">Your name</label>
@@ -102,7 +98,8 @@
               <textarea id="request-details" required name="Problem details" rows="5" placeholder="Tell us what is backing up, when it started, and whether water is rising."></textarea>
             </div>
 
-            <button class="btn btn-red form-submit" type="submit">Send Service Request</button>
+            <button class="btn btn-red form-submit" id="sendWhatsApp" type="button">Send Request on WhatsApp</button>
+            <button class="btn btn-outline form-submit" id="sendEmail" type="button">Send Request by Email</button>
             <p class="form-note">By sending this request, you agree that Draino may contact you by phone, text, or email about this job. This form is not monitored as an emergency line.</p>
           </form>
         </div>
@@ -135,5 +132,33 @@
 
   <div class="mobilebar"><a href="contact.html">Book a Visit</a><a href="tel:+18458791500">Call&nbsp;Now</a></div>
   <a class="whatsapp-float" href="https://api.whatsapp.com/send?phone=18458791500&amp;text=Hi%20I%20would%20like%20to%20schedule%20your%20service" target="_blank" rel="noopener" aria-label="Message Draino on WhatsApp"><span class="whatsapp-icon" aria-hidden="true"></span><span class="label">WhatsApp Draino</span></a>
+  <script>
+    const requestForm = document.getElementById('requestForm');
+
+    function serviceRequestMessage() {
+      if (!requestForm.reportValidity()) return null;
+
+      const name = document.getElementById('request-name').value.trim();
+      const phone = document.getElementById('request-phone').value.trim();
+      const email = document.getElementById('request-email').value.trim() || 'Not provided';
+      const address = document.getElementById('request-town').value.trim();
+      const service = document.getElementById('request-service').value;
+      const details = document.getElementById('request-details').value.trim();
+
+      return `New Draino service request\n\nName: ${name}\nPhone: ${phone}\nEmail: ${email}\nAddress/Town: ${address}\nService: ${service}\n\nWhat is happening:\n${details}`;
+    }
+
+    document.getElementById('sendWhatsApp').addEventListener('click', () => {
+      const message = serviceRequestMessage();
+      if (!message) return;
+      window.location.href = `https://api.whatsapp.com/send?phone=18458791500&text=${encodeURIComponent(message)}`;
+    });
+
+    document.getElementById('sendEmail').addEventListener('click', () => {
+      const message = serviceRequestMessage();
+      if (!message) return;
+      window.location.href = `mailto:service@draino24.com?subject=${encodeURIComponent('New service request from Draino24.com')}&body=${encodeURIComponent(message)}`;
+    });
+  </script>
 </body>
 </html>
